@@ -118,6 +118,7 @@ Procfile       text
 *.jxr  binary
 *.pdf  binary
 *.png  binary
+*.png  binary
 *.psb  binary
 *.psd  binary
 *.svg  text
