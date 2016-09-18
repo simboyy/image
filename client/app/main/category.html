@@ -144,8 +144,10 @@
                                     <div class="image">
                                         <center>
                                             <a ui-sref="productDetail({id:product._id, slug:product.slug})">
-                                                <img ng-src="/assets/products/{{product.variants[0].image}}"
-                                                     err-src="/assets/images/photo.png" class="responsive-img">
+                                                <img  ng-show="product.variants[0].image.base64" class="responsive-img"   data-ng-src="data:image/png;base64,{{product.variants[0].image.base64}}" data-err-src="images/png/avatar.png"/>
+
+                      <img ng-hide="product.variants[0].image.base64" ng-src="/assets/products/{{product.variants[0].image}}"
+                                  err-src="/assets/images/photo.png" class="responsive-img">
                                             </a>
                                         </center>
 

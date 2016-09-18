@@ -1,4 +1,32 @@
 <link rel="stylesheet" href="bower_components/angular-tablesort/tablesort.css" />
+<style type="text/css" media="screen">
+  .inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+    background-color: red;
+}
+.inputfile + label {
+  cursor: pointer; /* "hand" cursor */
+}
+
+
+</style>
 <form name="product_form">
     <div class="col-sm-12">
       <div class="box">
@@ -192,7 +220,17 @@
             <td><input type="text" ng-model="p.weight" style="width:70px;" placeholder="Weight"/></td>
             <td><input type="text" ng-model="p.mrp" style="width:70px;" placeholder="MRP"/></td>
             <td><input type="text" ng-model="p.price" style="width:70px;" placeholder="Price"/></td>
-            <td><input type="text" ng-model="p.image" style="width:150px;" placeholder="Image"/></td>
+            <td><label class="fileUpload btn btn-info btn-sm"  ng-hide="p.image">
+                <input type="file" id="file" class="inputfile" type="file"  name="file" id="file" ng-model="p.image"  base-sixty-four-input  maxsize="500" accept="image/*"/>
+                <span>Upload <i class="fa fa-upload"></i></span>
+            </label>
+            <label class="fileUpload btn btn-success btn-sm"  ng-show="p.image">
+                <input type="file" class="upload" type="file" ng-model="p.image" name="inputFile" base-sixty-four-input  maxsize="500" accept="image/*"/>
+                <span>Upload <i class="fa fa-upload"></i></span>
+            </label></td>
+
+
+
             <td>
                 <div class="btn-group">
                   <button type="button" class="btn btn-danger" ng-click="deleteVariants($index,product);"><i class="fa fa-trash-o"></i></button>

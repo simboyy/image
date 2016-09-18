@@ -13,10 +13,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col l1 col m3 col s12 search-icon">
+                <div class="col l1 col m3 col s12 search-icon" ng-if="isAdmin()== false">
                     <i class="mdi-action-search prefix"></i>
                 </div>
-                <div class="col l3 col m3 col s12">
+                <div class="col l3 col m3 col s12" ng-if="isAdmin()== false">
                     <!-- Search Button -->
                         <div class="top-search">
 
@@ -30,7 +30,7 @@
                 <div class="col l4 col m4 col s12 pull-right">
 
                     <!-- My Aardath -->
-                    <ul class="cart-menu">
+                    <ul class="cart-menu" ng-if="isAdmin()== false">
                         <li ><a href="cart.php">My Aardath</a>
                             <ul class="cart-menu">
                                 <li><i class="fa fa-shopping-cart"></i><a href="/cart"> My Cart ({{cart.getTotalCount()}}) - {{cart.getTotalPrice() | currency:"$"}}</a></li>
@@ -47,7 +47,7 @@
                     </ul>
 
                     <!-- Help -->
-                    <ul class="account-menu" ng-hide="isAdmin()">
+                    <ul class="account-menu" ng-if="isAdmin()== false">
                         <li><a class="account-name" href="#">Help</a>
                             <ul class="cart-menu">
                                 <li><i class="fa fa-phone"></i><a href="#"> +263 777 888 999</a></li>
@@ -57,7 +57,7 @@
                         </li>
                     </ul>
 
-                    <ul class="account-menu" ng-show="isAdmin()">
+                    <ul class="account-menu" ng-if="isAdmin()">
                           
                         <li   ><a class="account-name">Administration</a>
                             <ul class="cart-menu">
@@ -82,7 +82,7 @@
                   </li>
                          
 
-                            </ul>
+                    </ul>
                         </li>
                     </ul>
 
