@@ -296,7 +296,7 @@ ShoppingCart.prototype.checkoutPayPal = function (parms, clearCart) {
     // global data
     var data = {
         cmd: "_cart",
-        business: parms.merchantID,
+        business: "shanemaporisa@gmail.com",
         upload: "1",
         rm: "2",
         charset: "utf-8",
