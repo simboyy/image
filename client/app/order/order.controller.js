@@ -1,9 +1,13 @@
 'use strict';
 
 angular.module('shopnxApp')
-  .controller('OrderCtrl', function ($scope, Order, toastr) {
+  .controller('OrderCtrl', function ($scope, $rootScope ,Order, toastr) {
     $scope.orderStatusLov = Order.status;
-    $scope.orders = Order.my.query({},function(res){
+  
+    
+    if($rootScope.isAdmin){
+      
+    $scope.orders = Order.query({},function(res){
       var total=0;
       // for(var i=0;i<res.length;i++){
       //     var subTotal = 0;
@@ -17,6 +21,24 @@ angular.module('shopnxApp')
       // }
       // res.total = total;
     });
+    }else {
+        $scope.orders = Order.my.query({},function(res){
+      var total=0;
+      // for(var i=0;i<res.length;i++){
+      //     var subTotal = 0;
+          for(var j=0;j<res.length;j++){
+          // console.log();
+              // subTotal += res[i].shipping.charge;
+              total += res[j].shipping.total;
+          }
+          res.total = total;
+          console.log(total);
+      // }
+      // res.total = total;
+    });
+      
+    }
+    
     $scope.changeStatus = function(order){
       Order.update({ id:order._id }, order).$promise.then(function(res) {
         console.log(res);
